@@ -1,4 +1,5 @@
-
+import { useState } from 'react';
+import "./App.css"
 import Users from './components/Users'
 import NewUsers from './components/NewUsers'
 import { UsersContext, UsersProvider } from './context/UsersContext';
@@ -14,7 +15,7 @@ function App() {
             <NewUsers />
           <Users />
         </div>
-    </div>
+      </div>
     </UsersProvider>
   )
 }
@@ -22,3 +23,9 @@ function App() {
 export default App; 
 
 // API --> Users --> User
+
+// create context
+// provide context
+// use context
+
+
