@@ -1,29 +1,37 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { UsersContext } from '../context/UsersContext';
+import Users from './Users';
+import { UserHooks } from '../hooks/UsersHooks';
 
-const NewUsers = ({handleNewUsers}) => {
-
+const NewUsers = () => {
+    
+    const {users, setUsers} = UserHooks();
     const [name, setName] = useState('');
 
     const handleAddUser = (event) =>{
       event.preventDefault();
 
+      const newId = 
+      users.length > 0 ? Math.max(...users.map((users) => users.id)) : "0";
+
+
       const newUser = {
-        id: new Date().getDate().toString(),
+        id: newId + 1,
         userName: name,
-      }
+      };
 
-      handleNewUsers(newUser);
-    }
+      setName("");
+      setUsers((prev) => [...prev, newUser] ) 
+    };
     
-
-
-
 
   return (
     <div className='pt-3 text-center mb-6 bg-white'>
         <div>Add New Users</div>
         <form action="" className="w-2/3 mx-auto p-4">
-            <input placeholder='add new users'
+            <input 
+            value={name}
+            placeholder='add new users'
             onChange={(event) => setName(event.target.value)}
             className='w-full bg-white border border-black p-3 focus:outline-none'
             />

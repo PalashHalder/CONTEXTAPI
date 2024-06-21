@@ -1,10 +1,13 @@
 import React from 'react'
+import { UserHooks } from '../hooks/UsersHooks';
 
-const User = ({user, handleUserDelete}) => {
+const User = ({ user }) => {
+    const { users, setUsers } = UserHooks();
     const {id, userName } = user;
     
     const handleDelete = (id) => {
-      handleUserDelete(id);
+      const filteredUser = users.filter((user) => user.id !== id)
+    setUsers(filteredUser);
         
     };
 

@@ -1,12 +1,15 @@
 import React from 'react'
 import User from './User'
+import { UserHooks } from '../hooks/UsersHooks';
 
-const Users = ({ users, handleUserDelete }) => {
+const Users = () => {
+
+  const {users} = UserHooks();
 
   return (
     <div className='grid grid-cols-4 gap-3'>
       {users.map((user, index) => (
-        <User user = {user} handleUserDelete = {handleUserDelete} />
+        <User user = {user} />
       ))}
     </div>
   );
